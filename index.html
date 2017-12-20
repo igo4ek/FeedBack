@@ -32,6 +32,7 @@
 </head>
 
 <body>
+ 
 	<form onsubmit="return readAndValidate();" method = 'post' action = "run2.php">
 
 		<label for="name">ФИО:</label>
@@ -62,9 +63,9 @@
 		
 		//рус: А-Я а-я u0410-u042F u0430-u044F, Ё = u0401, ё = u0451
 		//источник: http://www.cyberforum.ru/php-regex/thread223472.html
-		//эталон: '/^(([А-ЯЁ]{1}[а-яё]+\s+){3})|(([A-Z]{1}[a-z]+\s+){3})$/'
+		//эталон: '/^((([А-ЯЁ]{1}[а-яё]+\s+)+)|(([A-Z]{1}[a-z]+\s+)+))$/'
 	var regulars=[
-		/^(([\u0410-\u042F\u0401]{1}[\u0430-\u044F\u0451]+\s*){3})|(([A-Z]{1}[a-z]+\s+){3})$/u, //for FIO
+		/^((([\u0410-\u042F\u0401]{1}([\u0430-\u044F\u0451]+\s*)+)+)|(([A-Z]{1}[a-z]+\s+)+))$/u, //for FIO
 		/^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i, //for e-mail
 		/^[+]{0,1}\d[\d\(\)\ -]{5,15}\d$/] //for phone
 	var alerts=[

@@ -1,5 +1,7 @@
 <?php
 header("Content-Type: text/html; charset=UTF-8");
+setlocale(LC_ALL, "ru_RU.UTF-8");
+
 $back = "<p><a href=\"javascript: history.back()\">Вернуться назад</a></p>";
 
     $name    = $_POST['name'];
@@ -8,9 +10,9 @@ $back = "<p><a href=\"javascript: history.back()\">Вернуться назад
     $message = $_POST['message'];
 
     $patterns=array(
-		'/^(([А-Я]{1}[а-я]+\s){2}[А-Я]{1}[а-я]+\s*)|(([A-Z]{1}[a-z]+\s){2}[A-Z]{1}[a-z]+\s*)$/u', //for FIO
+		'/^(([А-ЯЁ]{1}[а-яё]+\s*){3})|(([A-Z]{1}[a-z]+\s+){3})$/u', //for FIO
 		'/^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i', //for e-mail
-		'/^\d[\d\(\)\ -]{5,15}\d$/'); //for phone
+		'/^[+]{0,1}\d[\d\(\)\ -]{5,15}\d$/'); //for phone
 
     $isError=false;
 

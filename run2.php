@@ -10,7 +10,7 @@ $back = "<p><a href=\"javascript: history.back()\">Вернуться назад
     $message = $_POST['message'];
 
     $patterns=array(
-		'/^(([А-ЯЁ]{1}[а-яё]+\s*){3})|(([A-Z]{1}[a-z]+\s+){3})$/u', //for FIO
+		'/^((([А-ЯЁ]{1}[а-яё]+\s*)+)|(([A-Z]{1}[a-z]+\s+)+))$/u', //for FIO
 		'/^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i', //for e-mail
 		'/^[+]{0,1}\d[\d\(\)\ -]{5,15}\d$/'); //for phone
 
@@ -41,5 +41,4 @@ $back = "<p><a href=\"javascript: history.back()\">Вернуться назад
 
     if($isError) echo "<p><font color='red'>Попробуйте ещё раз!</font></p>";
     echo $back;
-
 ?>

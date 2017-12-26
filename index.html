@@ -33,7 +33,7 @@
 
 <body>
  
-	<form onsubmit="return readAndValidate();" method = 'post' action = "run2.php">
+	<form enctype="multipart/form-data" onsubmit="return readAndValidate();" method = 'post' action = "run2.php" >
 
 		<label for="name">ФИО:</label>
 		<input maxlength="30" type="text" name='name' value = "Конюхов Игорь Олегович"/>
@@ -43,7 +43,10 @@
  
 		<label for="phone">Телефон:</label>
 		<input maxlength="30" type="text" name='phone' value = "8(978)729-37-42"/>
- 
+
+		<label for="fileFile">Прикрепить файл:</label>
+		<input type="file" name='uploadedFile' >
+
 		<label for="message">Сообщение:</label>
 		<textarea rows="5" cols="40"      name='message'></textarea>
  
@@ -98,4 +101,5 @@
 		if(result)window.alert(alerts[3]);
 		return result;
 	 }
+	 
 </script>

@@ -4,10 +4,14 @@ setlocale(LC_ALL, "ru_RU.UTF-8");
 
 $back = "<p><a href=\"javascript: history.back()\">Вернуться назад</a></p>";
 
-    $name    = $_POST['name'];
-    $mail    = $_POST['mail'];
-    $phone   = $_POST['phone'];
-    $message = $_POST['message'];
+    $name        = $_POST['name'];
+    $mail        = $_POST['mail'];
+    $phone       = $_POST['phone'];
+    $isErrorFile = $_FILES['uploadedFile']['error'];
+    $fileName    = $_FILES['uploadedFile']['name'];
+    $fileSize    = $_FILES['uploadedFile']['size'];
+    $message     = $_POST['message'];
+
 
     $patterns=array(
 		'/^((([А-ЯЁ]{1}[а-яё]+\s*)+)|(([A-Z]{1}[a-z]+\s+)+))$/u', //for FIO
@@ -31,14 +35,24 @@ $back = "<p><a href=\"javascript: history.back()\">Вернуться назад
         $phone = "<font color='red'>Некорректно введен Номер телефона. </font>";
         $isError=true;
     };
+    if($isErrorFile)
+    {
+        $file = "<font color='black'>Файл не загружен. </font>";
+    }
+    else
+    {
+        $file = "<font color='black'> $fileName ($fileSize байт) </font>";
+    }
     if($message=="")$message="Пусто.";
 
     echo "Сервер получил Ваши данные\n";
     echo "<p>Имя: ".$name."</p>";
     echo "<p>Почта: ".$mail."</p>";
     echo "<p>Телефон: ".$phone."</p>";
+    echo "<p>Файл: ".$file."</p>";
     echo "<p>Сообщение: ".$message."</p>";
 
     if($isError) echo "<p><font color='red'>Попробуйте ещё раз!</font></p>";
     echo $back;
+
 ?>
